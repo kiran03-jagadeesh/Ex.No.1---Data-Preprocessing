@@ -24,18 +24,85 @@ Another aspect is that the data set should be formatted in such a way that more 
 
 
 ## ALGORITHM:
+### STEP 1:
 Importing the libraries
+### STEP 2:
 Importing the dataset
+### STEP 3:
 Taking care of missing data
+### STEP 4:
 Encoding categorical data
+### STEP 5:
 Normalizing the data
+### STEP 6:
 Splitting the data into test and train
 
-## PROGRAM:
-/Write your code here/
+## PROGRAM: 
+```
+### Developed by : Kiran J
+### Reg.No : 212221240022
+```
+```python
+import pandas as pd
 
-## OUTPUT:
-/ Show the result/
+df=pd.read_csv("/content/Churn_Modelling.csv")
 
-## RESULT
-/Type your result here/
+df.head()
+
+df.isnull().sum()
+
+df.drop(["RowNumber","Age","Gender","Geography","Surname"],inplace=True,axis=1)
+
+print(df)
+
+x=df.iloc[:,:-1].values
+
+y=df.iloc[:,-1].values
+
+print(x)
+
+print(y)
+
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+
+df1 = pd.DataFrame(scaler.fit_transform(df))
+
+print(df1)
+
+from sklearn.model_selection import train_test_split
+
+xtrain,ytrain,xtest,ytest=train_test_split(x,y,test_size=0.2,random_state=2)
+
+print(xtrain)
+
+print(len(xtrain))
+
+print(xtest)
+
+print(len(xtest))
+
+from sklearn.preprocessing import StandardScaler
+
+sc = StandardScaler()
+
+df1 = sc.fit_transform(df)
+
+print(df1)
+```
+
+## OUTPUT: 
+![output](p1.png)
+![output](p2.png)
+![output](p3.png)
+![output](p4.png)
+![output](p5.png)
+![output](p6.png)
+![output](p7.png)
+![output](p8.png)
+![output](p9.png)
+
+
+## RESULT 
+Thus,the program to perform Data preprocessing in a data set downloaded from Kaggle is implemented successfully..
